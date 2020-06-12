@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const router = express.Router();
 const Contact = require("../models/contact");
 
+
+//Get all contacts
 router.get('/', (req, res) => {
   Contact.find({}, (err, allContacts) => {
     if(err){
@@ -14,6 +16,7 @@ router.get('/', (req, res) => {
   });
 });
 
+//Create new contact
 router.post('/', bodyParser.json(), (req, res) => {
   const { name, email, address } = req.body
 
@@ -34,6 +37,8 @@ router.post('/', bodyParser.json(), (req, res) => {
   }
 })
 
+
+//Delete contact
 router.delete('/:id', (req, res) => {
   Contact.findByIdAndRemove(req.params.id, err => {
     if(err){
@@ -45,6 +50,8 @@ router.delete('/:id', (req, res) => {
   });
 })
 
+
+//Update contact
 router.put('/:id', (req, res) => {
   Contact.findByIdAndUpdate(req.params.id, req.body, (err, contact) => {
       if(err || !contact){

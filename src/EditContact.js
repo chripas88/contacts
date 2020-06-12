@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Input from './Input';
 
 class EditContact extends Component {
+	//same as create contact. missing initial contact values
 	state={
 		contactForm: {
 			name: {
@@ -105,7 +106,7 @@ class EditContact extends Component {
 						shouldValidate={formElement.config.validation}
 						changed={(event) => this.inputChangedHandler(event, formElement.id)} />
 				))}
-				<button disabled={!this.state.formIsValid}>Add Contact</button>
+				<button disabled={!this.state.formIsValid}>Edit Contact</button>
 			</form>
 		);
     

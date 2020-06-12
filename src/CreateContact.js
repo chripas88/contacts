@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Input from './Input';
 
 class CreateContact extends Component {
+	//Generic form based on state. given more time i would polish it
 	state={
 		contactForm: {
 			name: {
@@ -42,7 +43,8 @@ class CreateContact extends Component {
 		},
 		formIsValid: false
   }
-  
+	
+	//on submit pass the form input to create new contact
   handleSubmit = (e) => {
     event.preventDefault();
 		const formData = {};
@@ -54,6 +56,7 @@ class CreateContact extends Component {
     }
   }
 
+	//apply validation according to rules
   checkValidity(value, rules) {
 		let isValid = true;
 		if(rules.required){
@@ -61,7 +64,8 @@ class CreateContact extends Component {
 		}
 		return isValid;
   }
-  
+	
+	//update state according to user input
   inputChangedHandler = (event, inputIdentifier) => {
 		const updatedContactForm = {
 			...this.state.contactForm
